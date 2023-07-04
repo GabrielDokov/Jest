@@ -10,18 +10,24 @@ class PizzaRestaurant {
     this.pizzas = [];
   }
   preparePizza(name, ingredients) {
+
     if (ingredients.length === 0) {
-      throw Error("Invalid ingredients");
-    } else {
-      const pizza = new Pizza(name, ingredients);
-      this.pizzas.push(pizza);
-      return pizza;
+      throw new Error("Invalid ingredients");
     }
+
+    if(this.hasPizza(name)){
+      throw new Error
+    }
+
+    const pizza = new Pizza(name, ingredients);
+    this.pizzas.push(pizza);
+    return pizza;
   }
 
   hasPizza(name) {
     return this.pizzas.some((pizza) => pizza.name === name);
   }
+
 
   getPizzaCount() {
     return this.pizzas.length;
